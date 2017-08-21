@@ -1,0 +1,6 @@
+---
+# Role must be the name of the project as this is the folder designation that gitlab will use
+- name: Configuration Playbook
+  hosts: all
+  roles:
+    - role: ansible-os-hardening

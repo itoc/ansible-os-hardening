@@ -1,0 +1,22 @@
+- name: Testing prerequisites
+    hosts: all
+    gather_facts: yes
+    tasks:
+      - name: Copy tests to remote
+        copy:
+          src: "{{ playbook_dir }}/../files/goss/{{ item }}"
+          dest: "/tmp/{{ item }}"
+        with_items:
+          - services.yml
+
+- name: Execute goss tests
+  hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+  - name: test goss files
+    goss:
+      path: "/tmp/{{ item }}"
+      format: documentation
+    with_items:
+      - services.yml
