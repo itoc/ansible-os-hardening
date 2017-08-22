@@ -1,4 +1,15 @@
 ---
+- name: check if sysctl.conf exists
+  stat:
+    path: /etc/sysctl.conf
+  register: check_sysctl
+
+- name: create sysctl.conf if it doesn't exist
+  file:
+    path: /etc/sysctl.conf
+    state: touch
+  when: check_sysctl.stat.exists == False
+
 - name: protect sysctl.conf
   file:
     path: '/etc/sysctl.conf'

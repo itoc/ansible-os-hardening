@@ -1,4 +1,0 @@
-service:
-  telnet:
-    enabled: False
-    running: False
