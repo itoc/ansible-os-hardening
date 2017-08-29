@@ -35,6 +35,10 @@ docker:
 verifier:
   name: goss
 ansible:
+ansible:
+  config_file: /tmp/ansible.cfg
+  ansiblecfg_ssh_connection:
+    pipelining: True
   playbook: tests/playbook.yml
   sudo: False
   group_vars:
